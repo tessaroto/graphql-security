@@ -1,0 +1,17 @@
+{
+  "name": "graphql-security",
+  "version": "1.0.2",
+  "description": "Security Module for GraphQL",
+  "author": "Rafael Tessaroto",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tessaroto/graphql-security.git"
+  },
+  "dependencies": {
+    "@tessaroto/security": "^1.2.1"
+  },
+  "files": [
+    "lib",
+    "index.js"
+  ]
+}

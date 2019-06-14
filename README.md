@@ -4,41 +4,8 @@
 
 ## Installing module
 ```
-$ npm install security-expressjs --save    
+$ npm install security-graphql --save    
 ```
-
-
-## index.js
-```
-const config = require('./config.json');
-const Security = require('security-expressjs');
-const protect = new Security(config.auth);
-
-const express = require('express');
-const app = express();
-
-app.get('/user/:id', protect("example-admin"),  function (req, res, next) {
-  res.send({ result: 'OK'});
-});
-
-app.listen(3000);
-```
-
-## Get user id
-
-```
-app.get('/brand/:id', protect("example-admin"),  function (req, res, next) {
-  
-  res.send({ userId: res.locals.user, authenticated: res.locals.authenticated});
-});
-
-```
-| Element | Description |
-| ------ | ------ |
-| req.user.userId | Identification user in keycloak (sub) | 
-| req.user.username | the username in keycloak (preferred_username) | 
-| req.user.authenticated | if user is authenticated | 
-
 
 ## Configuration
 ### Example
@@ -77,10 +44,3 @@ const protect = new Security(config);
 | bearer.cache.cert_ttl | TTL of certification cache| 10 min |
 | bearer.cache.cert_stale_ttl | TTL of certification stale cache | 1 day |
 | bearer.cache.cert_stale_short_ttl | | 1 min |
-
-
-### Methods
-| Element | Description |
-| ------ | ------ |
-| new Security([config]) | Create a new Security for use to protect routers of expressjs  |
-| protect([role of client]) | Using to indicate that the route is safe, if de token haven't the role then the client will recever 401 http code. |
